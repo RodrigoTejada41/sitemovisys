@@ -11,6 +11,20 @@ Atualizado em 17/07/2026.
 - Página inicial: `http://localhost:8081/`.
 - Página institucional: `http://localhost:8081/quem-somos`.
 - Galeria de serviços: `http://localhost:8081/fotos-servicos`.
+- Produção: `https://movisystecnologia.com.br`.
+- Página institucional em produção: `https://movisystecnologia.com.br/quem-somos`.
+
+## Produção na VPS
+
+- Servidor: `172.233.177.135`.
+- Servidor web: Nginx do host com certificado Let's Encrypt existente.
+- Release ativa: `/var/www/movisys-site/releases/20260717-ff77ecd`.
+- Link ativo: `/var/www/movisys-site/current`.
+- Configuração compartilhada: `/etc/nginx/sites-available/movisystecnologia-pragsys.conf`.
+- Backup anterior à implantação: `/etc/nginx/sites-available/movisystecnologia-pragsys.conf.bak-20260717-210035`.
+- O site ocupa somente a rota raiz `/`.
+- As aplicações existentes em `/dev/` e `/PragSys/` foram preservadas.
+- Nenhuma senha está armazenada no projeto.
 
 ## Funcionalidades implementadas
 
@@ -54,6 +68,9 @@ Logotipos oficiais fornecidos estão documentados em `documentation/client-asset
 - Largura responsiva: sem rolagem horizontal em `1440px` e `390px`.
 - Console do navegador: zero erros e zero avisos na página `Quem Somos`.
 - Navegação da página inicial para `/quem-somos`: aprovada.
+- HTTPS público, domínio principal e `www`: aprovados.
+- Aplicações existentes `/dev/` e `/PragSys/`: aprovadas após a implantação.
+- Nginx e todos os oito contêineres preexistentes: ativos e saudáveis após a implantação.
 
 ## Estrutura principal
 
@@ -78,3 +95,5 @@ Logotipos oficiais fornecidos estão documentados em `documentation/client-asset
 2. Executar `docker ps --filter name=site-movisys-m` para conferir o ambiente local.
 3. Abrir `http://localhost:8081`.
 4. Continuar pelas pendências externas ou pelo próximo ajuste visual solicitado.
+
+Para nova publicação ou rollback, seguir `documentation/DEPLOY_VPS.md`.

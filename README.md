@@ -2,6 +2,8 @@
 
 Site institucional da MoviSys em React + Vite, com apresentação de soluções, segmentos atendidos, clientes, serviços e página institucional.
 
+Produção: [https://movisystecnologia.com.br](https://movisystecnologia.com.br)
+
 ## Recursos
 
 - Landing page responsiva.
@@ -49,6 +51,7 @@ Acesse `http://localhost:8081`.
 - `RETOMADA_EXATA.md`: estado operacional e ponto de retomada.
 - `docs/components/`: documentação dos componentes institucionais.
 - `documentation/client-assets.md`: origem e situação dos logotipos.
+- `documentation/DEPLOY_VPS.md`: arquitetura, publicação e rollback da VPS.
 - `changelog/`: histórico das implementações.
 
 ## Contato

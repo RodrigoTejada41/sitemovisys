@@ -10,10 +10,11 @@ Produção: [https://movisystecnologia.com.br](https://movisystecnologia.com.br)
 - Página independente `Quem Somos`.
 - Soluções de software, automação, infraestrutura e suporte.
 - Segmentos interativos com descrição e recursos indicados.
-- Carrossel automático de clientes.
+- Grade responsiva de clientes.
 - Formulário com envio por WhatsApp ou e-mail.
 - Galeria de serviços técnicos.
-- SEO básico e navegação semântica.
+- SEO técnico, dados estruturados e navegação semântica.
+- Imagens otimizadas em WebP.
 
 ## Executar
 
@@ -49,6 +50,7 @@ Acesse `http://localhost:8081`.
 ## Documentação
 
 - `RETOMADA_EXATA.md`: estado operacional e ponto de retomada.
+- `docs/AUDITORIA_UX_UI_2026-07-20.md`: problemas identificados, impactos e correções aplicadas.
 - `docs/components/`: documentação dos componentes institucionais.
 - `documentation/client-assets.md`: origem e situação dos logotipos.
 - `documentation/DEPLOY_VPS.md`: arquitetura, publicação e rollback da VPS.

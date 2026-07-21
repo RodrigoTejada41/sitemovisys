@@ -31,6 +31,7 @@
   box-shadow: 0 1px 0 rgba(255, 255, 255, .08);
   backdrop-filter: blur(16px);
 }
+.sp-topbar .brand { color: #fff; }
 .sp-logo { display: inline-flex; align-items: center; gap: 10px; width: max-content; font-size: 1.25rem; font-weight: 700; letter-spacing: -.04em; }
 .sp-logo svg { width: 31px; height: 31px; fill: none; stroke: currentColor; stroke-width: 3.2; stroke-linejoin: bevel; }
 .sp-logo b { color: #4dd5f5; }
@@ -243,8 +244,9 @@
   .sp-page-head { display: block; padding: 27px 0 22px; }
   .sp-page-head h1 { font-size: 2rem; }
   .sp-page-head p { font-size: .84rem; }
-  .sp-head-actions { margin-top: 20px; overflow-x: auto; }
-  .sp-head-actions .sp-button { flex: 0 0 auto; }
+  .sp-head-actions { display: grid; grid-template-columns: 1fr 1fr; margin-top: 20px; }
+  .sp-head-actions .sp-button { min-width: 0; }
+  .sp-head-actions .sp-button--primary { grid-column: 1 / -1; grid-row: 1; }
   .order-context { grid-template-columns: 1fr 1fr; }
   .order-context > div { padding: 14px; }
   .order-context > div:nth-child(3) { grid-column: 1 / -1; border-top: 1px solid rgba(255, 255, 255, .1); }
@@ -287,7 +289,7 @@
   body > #root > .service-photos-app > :not(.print-report) { display: none !important; }
   .print-report { display: block; padding: 0; color: #172a36; font-family: Arial, sans-serif; }
   .print-report > header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 15px; border-bottom: 2px solid #172a36; }
-  .print-report .sp-logo { color: #071c2a; }
+  .print-report .brand { color: #071c2a; }
   .print-report header > div { display: grid; gap: 4px; text-align: right; }
   .print-report header strong { font-size: 16px; }
   .print-report header span { color: #60727c; font-size: 10px; }

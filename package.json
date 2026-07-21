@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
-    "framer-motion": "^12.42.2",
     "lucide-react": "^0.468.0",
     "react": "latest",
     "react-dom": "latest",

@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowLeft, Check, ChevronDown, Download, FileText, Filter, Grid2X2, List, Plus,
   Printer, Search, Star, Upload, X,
@@ -7,13 +7,10 @@ import ServicePhotoCard from './ServicePhotoCard';
 import PhotoLightbox from './PhotoLightbox';
 import PhotoEditorDrawer from './PhotoEditorDrawer';
 import { initialPhotos } from './servicePhotoData';
+import { Brand } from '../shared/Brand';
 import './servicePhotos.css';
 
 const categories = ['Todos', 'Antes', 'Durante', 'Depois', 'Irregularidades', 'Resultado final'];
-
-function Logo() {
-  return <a className="sp-logo" href="/" aria-label="MoviSys"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M6 32V12l8.1 10L22 12l8 10L38 12v20M6 32h32" /></svg><span>Movi<b>Sys</b></span></a>;
-}
 
 export default function ServicePhotosPage() {
   const [photos, setPhotos] = useState(initialPhotos);
@@ -28,6 +25,24 @@ export default function ServicePhotosPage() {
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [toast, setToast] = useState('');
   const uploadRef = useRef(null);
+
+  useEffect(() => {
+    const previousTitle = document.title;
+    const description = document.querySelector('meta[name="description"]');
+    const robots = document.querySelector('meta[name="robots"]');
+    const previousDescription = description?.getAttribute('content');
+    const previousRobots = robots?.getAttribute('content');
+
+    document.title = 'Relatório fotográfico de serviços | MoviSys';
+    description?.setAttribute('content', 'Galeria técnica MoviSys para organizar, revisar e exportar evidências de serviços realizados.');
+    robots?.setAttribute('content', 'noindex, nofollow');
+
+    return () => {
+      document.title = previousTitle;
+      if (description && previousDescription) description.setAttribute('content', previousDescription);
+      if (robots && previousRobots) robots.setAttribute('content', previousRobots);
+    };
+  }, []);
 
   const responsibles = useMemo(() => ['Todos', ...new Set(photos.map((photo) => photo.responsible))], [photos]);
   const filtered = useMemo(() => photos.filter((photo) => {
@@ -77,8 +92,9 @@ export default function ServicePhotosPage() {
 
   return (
     <div className="service-photos-app">
-      <header className="sp-topbar"><Logo /><a href="/" className="sp-back"><ArrowLeft /> Site institucional</a><div className="sp-user"><span>RT</span><div><strong>Rafael Teixeira</strong><small>Administrador</small></div><ChevronDown /></div></header>
-      <main className="sp-main">
+      <a className="skip-link" href="#conteudo-principal">Ir para o conteúdo</a>
+      <header className="sp-topbar"><Brand /><a href="/" className="sp-back"><ArrowLeft /> Site institucional</a><div className="sp-user"><span>RT</span><div><strong>Rafael Teixeira</strong><small>Administrador</small></div><ChevronDown /></div></header>
+      <main className="sp-main" id="conteudo-principal">
         <nav className="breadcrumbs" aria-label="Navegação estrutural"><a href="#ordens">Ordens de serviço</a><span>/</span><a href="#os">OS-2026-0148</a><span>/</span><strong>Fotos</strong></nav>
         <section className="sp-page-head">
           <div><span className="sp-overline">Evidências técnicas</span><h1>Fotos dos serviços realizados</h1><p>Documentação visual organizada por etapa, com contexto técnico e rastreabilidade.</p></div>
@@ -109,7 +125,7 @@ export default function ServicePhotosPage() {
         {selected.length > 0 && <div className="batch-bar"><span><i>{selected.length}</i> selecionada(s)</span><button type="button" onClick={() => setSelected([])}>Limpar seleção</button><button type="button" onClick={downloadSelected}><Download /> Baixar</button><button type="button" onClick={printReport}><Printer /> Imprimir</button><button className="batch-bar__primary" type="button" onClick={printReport}><FileText /> Gerar relatório</button></div>}
       </main>
 
-      <section className="print-report" aria-hidden="true"><header><Logo /><div><strong>Relatório fotográfico</strong><span>OS-2026-0148 · Grupo Horizonte Ltda.</span></div></header><div className="print-report__meta"><span>Serviço: Organização e certificação de rede</span><span>Data: 17/07/2026</span><span>Status: Concluído</span></div><div className="print-report__grid">{photos.filter((photo) => !selected.length || selected.includes(photo.id)).map((photo) => <article key={photo.id}><img src={photo.image} alt="" /><div><span>{String(photo.sequence).padStart(2, '0')} · {photo.category}</span><h2>{photo.title}</h2><p>{photo.description}</p><dl><div><dt>Local</dt><dd>{photo.location}</dd></div><div><dt>Responsável</dt><dd>{photo.responsible}</dd></div><div><dt>Resultado</dt><dd>{photo.result}</dd></div></dl></div></article>)}</div></section>
+      <section className="print-report" aria-hidden="true"><header><Brand compact /><div><strong>Relatório fotográfico</strong><span>OS-2026-0148 · Grupo Horizonte Ltda.</span></div></header><div className="print-report__meta"><span>Serviço: Organização e certificação de rede</span><span>Data: 17/07/2026</span><span>Status: Concluído</span></div><div className="print-report__grid">{photos.filter((photo) => !selected.length || selected.includes(photo.id)).map((photo) => <article key={photo.id}><img src={photo.image} alt="" /><div><span>{String(photo.sequence).padStart(2, '0')} · {photo.category}</span><h2>{photo.title}</h2><p>{photo.description}</p><dl><div><dt>Local</dt><dd>{photo.location}</dd></div><div><dt>Responsável</dt><dd>{photo.responsible}</dd></div><div><dt>Resultado</dt><dd>{photo.result}</dd></div></dl></div></article>)}</div></section>
 
       {activePhoto && <PhotoLightbox photo={activePhoto} photos={filtered} onClose={() => setLightboxId(null)} onNavigate={navigateLightbox} onEdit={(id) => { setLightboxId(null); setEditingId(id); }} onToggleImportant={toggleImportant} onDownload={downloadPhoto} />}
       {editingPhoto && <PhotoEditorDrawer photo={editingPhoto} onClose={() => setEditingId(null)} onSave={savePhoto} />}

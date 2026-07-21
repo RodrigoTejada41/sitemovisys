@@ -1,10 +1,14 @@
 # Retomada exata — Site MoviSys
 
-Atualizado em 17/07/2026.
+Atualizado em 21/07/2026.
 
 ## Estado operacional
 
 - Aplicação React + Vite concluída e compilando.
+- Redesign UX/UI das três rotas concluído e validado localmente.
+- Checkpoint local desta entrega: commit com assunto `feat: aprimora UX e conversao do site`.
+- Servidor de desenvolvimento: `npm.cmd run dev -- --host 127.0.0.1 --port 4173`.
+- Preview local durante o desenvolvimento: `http://127.0.0.1:4173`.
 - Contêiner Docker: `site-movisys-m`.
 - Imagem Docker: `site-movisys-m:latest`.
 - Porta local: `8081`.
@@ -13,6 +17,7 @@ Atualizado em 17/07/2026.
 - Galeria de serviços: `http://localhost:8081/fotos-servicos`.
 - Produção: `https://movisystecnologia.com.br`.
 - Página institucional em produção: `https://movisystecnologia.com.br/quem-somos`.
+- O redesign de 21/07/2026 ainda não foi publicado na VPS.
 
 ## Produção na VPS
 
@@ -33,12 +38,18 @@ Atualizado em 17/07/2026.
 - Apresentação de software, automação comercial, infraestrutura e suporte.
 - Destaque para desenvolvimento de sistemas sob medida.
 - Dez tipos de negócio com painel interativo de descrição.
-- Seção `Nossos Clientes` com carrossel automático no desktop e grid móvel.
-- Página `Quem Somos` com trajetória, missão, visão, valores e manifesto.
+- Seção `Nossos Clientes` com grade estática responsiva e sem movimento automático.
+- Página `Quem Somos` com trajetória condensada, missão, visão, valores e CTA comercial.
 - Formulário de contato com seleção do serviço e envio por WhatsApp ou e-mail.
+- Formulário com contenção de foco, fechamento por `Escape` e restauração do foco anterior.
 - Links diretos para WhatsApp, telefone e e-mail.
-- Galeria comparativa de serviços técnicos.
-- SEO e estrutura semântica nas páginas institucionais.
+- Galeria comparativa com layout móvel corrigido, filtros e lightbox preservados.
+- Navegação principal reduzida e CTAs padronizados para conversão.
+- SEO com canonical, Open Graph, Schema.org, `robots.txt` e `sitemap.xml`.
+- Galeria operacional marcada como `noindex`.
+- Imagens principais convertidas para WebP; PNGs originais preservados.
+- Dependência `framer-motion` removida por não ser mais necessária.
+- Auditoria completa em `docs/AUDITORIA_UX_UI_2026-07-20.md`.
 
 ## Clientes cadastrados
 
@@ -62,15 +73,15 @@ Logotipos oficiais fornecidos estão documentados em `documentation/client-asset
 
 - `npx.cmd tsc --noEmit`: aprovado.
 - `npm.cmd run build`: aprovado.
-- Build da imagem Docker: aprovado.
-- Teste HTTP no Nginx: aprovado.
-- Playwright desktop e celular: aprovado.
-- Largura responsiva: sem rolagem horizontal em `1440px` e `390px`.
-- Console do navegador: zero erros e zero avisos na página `Quem Somos`.
-- Navegação da página inicial para `/quem-somos`: aprovada.
-- HTTPS público, domínio principal e `www`: aprovados.
-- Aplicações existentes `/dev/` e `/PragSys/`: aprovadas após a implantação.
-- Nginx e todos os oito contêineres preexistentes: ativos e saudáveis após a implantação.
+- Build final: JavaScript `260,87 kB` (`79,27 kB` gzip) e CSS `68,39 kB` (`14,88 kB` gzip).
+- Playwright em `1440px`, `768px` e `390px`: aprovado.
+- Largura responsiva: sem rolagem horizontal nos viewports validados.
+- Console do navegador: zero erros e zero avisos.
+- Formulário, menu móvel, abas de infraestrutura, segmentos, filtros e lightbox: aprovados.
+- `/`, `/quem-somos`, `/fotos-servicos`, `robots.txt`, `sitemap.xml` e WebP principal: HTTP 200 no ambiente local.
+- Seis WebPs principais: `663.086 bytes` no total, contra aproximadamente `12,4 MB` dos PNGs usados antes.
+- `npm audit`: zero vulnerabilidades.
+- Docker, Nginx e HTTPS de produção não foram revalidados nesta entrega porque não houve publicação.
 
 ## Estrutura principal
 
@@ -87,13 +98,16 @@ Logotipos oficiais fornecidos estão documentados em `documentation/client-asset
 
 - Receber os logotipos autorizados de Seguradora Mondial e XD Software.
 - Confirmar endereço comercial e perfis sociais antes de publicá-los.
-- Definir domínio e ambiente de hospedagem pública.
+- Publicar o redesign na VPS seguindo `documentation/DEPLOY_VPS.md`.
+- Após a publicação, validar domínio principal, `www`, `/dev/` e `/PragSys/`.
 
 ## Próxima retomada
 
-1. Executar `git status -sb` e confirmar que a árvore está limpa.
-2. Executar `docker ps --filter name=site-movisys-m` para conferir o ambiente local.
-3. Abrir `http://localhost:8081`.
-4. Continuar pelas pendências externas ou pelo próximo ajuste visual solicitado.
+1. Executar `git status --short --branch` e confirmar que a árvore está limpa.
+2. Executar `git log -1 --oneline` e localizar `feat: aprimora UX e conversao do site`.
+3. Executar `npm.cmd install`, `npx.cmd tsc --noEmit` e `npm.cmd run build`.
+4. Para revisão local, executar `npm.cmd run dev -- --host 127.0.0.1 --port 4173`.
+5. Abrir `http://127.0.0.1:4173`, `/quem-somos` e `/fotos-servicos`.
+6. Para publicação ou rollback, seguir `documentation/DEPLOY_VPS.md`.
 
 Para nova publicação ou rollback, seguir `documentation/DEPLOY_VPS.md`.

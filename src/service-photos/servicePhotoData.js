@@ -22,7 +22,7 @@ export const initialPhotos = [
     situation: 'Patch cords sem padronização, curvaturas acentuadas e acesso parcial aos equipamentos.',
     action: 'Mapeamento lógico e físico de todos os pontos antes da remoção dos cabos.',
     result: 'Topologia identificada e plano de reorganização validado sem interromper os serviços críticos.',
-    image: '/assets/service-before-rack.png',
+    image: '/assets/service-before-rack.webp',
     important: true,
   },
   {
@@ -40,7 +40,7 @@ export const initialPhotos = [
     situation: 'Trava do conector rompida e capa de proteção deformada.',
     action: 'Substituição do patch cord por cabo certificado e novo teste de continuidade.',
     result: 'Enlace estabilizado, sem perda de pacotes no teste posterior.',
-    image: '/assets/service-irregularity-cable.png',
+    image: '/assets/service-irregularity-cable.webp',
     important: true,
   },
   {
@@ -58,7 +58,7 @@ export const initialPhotos = [
     situation: 'Cabos ocupavam a área frontal dos switches e impediam manutenção rápida.',
     action: 'Roteamento, identificação, certificação e fixação dos enlaces por grupo.',
     result: 'Acesso frontal liberado e identificação visual padronizada.',
-    image: '/assets/service-during-rack.png',
+    image: '/assets/service-during-rack.webp',
     important: false,
   },
   {
@@ -76,7 +76,7 @@ export const initialPhotos = [
     situation: 'Rack reorganizado após correção das irregularidades identificadas.',
     action: 'Inspeção final, teste de comunicação, conferência de portas e atualização do mapa de rede.',
     result: 'Infraestrutura organizada, documentada e com manutenção futura simplificada.',
-    image: '/assets/service-after-rack.png',
+    image: '/assets/service-after-rack.webp',
     important: true,
   },
 ];

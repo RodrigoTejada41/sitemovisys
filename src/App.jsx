@@ -39,10 +39,8 @@ import { Brand } from './shared/Brand';
 const navigation = [
   ['Soluções', '#solucoes'],
   ['Software', '#software'],
-  ['Infraestrutura', '#infraestrutura'],
   ['Clientes', '#clientes'],
   ['Quem Somos', '/quem-somos'],
-  ['Assessoria', '#assessoria'],
   ['Contato', '#contato'],
 ];
 
@@ -50,30 +48,30 @@ const pillars = [
   {
     icon: Code2,
     label: 'Software',
-    title: 'Gestão que transforma dados em decisões.',
-    description: 'ERP, PDV, financeiro, estoque, CRM, dashboards e sistemas sob medida integrados à rotina da sua empresa.',
-    tags: ['ERP empresarial', 'PDV e delivery', 'CRM', 'Integrações'],
+    title: 'Gestão clara para decisões melhores.',
+    description: 'ERP, PDV, financeiro, estoque e CRM conectados à rotina da empresa.',
+    tags: ['ERP e PDV', 'CRM e integrações'],
   },
   {
     icon: Blocks,
     label: 'Automação comercial',
-    title: 'Venda rápida, integrada e sem atrito.',
-    description: 'Frente de caixa preparada para NFC-e, TEF, PIX, balanças, leitores, comandas e autoatendimento.',
-    tags: ['NFC-e e NF-e', 'TEF e PIX', 'Comandas', 'Periféricos'],
+    title: 'Vendas rápidas e sem retrabalho.',
+    description: 'Frente de caixa integrada a NFC-e, TEF, PIX, balanças, leitores e comandas.',
+    tags: ['Fiscal e pagamentos', 'Comandas e periféricos'],
   },
   {
     icon: Network,
     label: 'Infraestrutura',
-    title: 'A base segura para a operação crescer.',
-    description: 'Redes, servidores, cloud, backup e segurança planejados como um único ambiente de alta disponibilidade.',
-    tags: ['Redes e Wi-Fi', 'Servidores', 'Cloud', 'Segurança'],
+    title: 'Infraestrutura segura e disponível.',
+    description: 'Redes, servidores, cloud e backup planejados como um único ambiente.',
+    tags: ['Redes e servidores', 'Cloud e segurança'],
   },
   {
     icon: Headphones,
     label: 'Suporte técnico',
-    title: 'Especialistas presentes quando importa.',
-    description: 'Atendimento preventivo e corretivo, monitoramento e manutenção para reduzir paradas e preservar desempenho.',
-    tags: ['Remoto e presencial', 'Monitoramento', 'Backup', 'Manutenção'],
+    title: 'Suporte presente quando importa.',
+    description: 'Atendimento preventivo e corretivo para reduzir paradas e manter o desempenho.',
+    tags: ['Remoto e presencial', 'Monitoramento e manutenção'],
   },
 ];
 
@@ -138,20 +136,19 @@ function LandingPage() {
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('is-visible')),
-      { threshold: 0.14 },
-    );
-    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
-
     return () => {
       window.removeEventListener('scroll', onScroll);
-      observer.disconnect();
     };
   }, []);
 
   useEffect(() => {
     document.body.classList.toggle('menu-open', menuOpen);
+    const closeOnEscape = (event) => event.key === 'Escape' && setMenuOpen(false);
+    window.addEventListener('keydown', closeOnEscape);
+    return () => {
+      document.body.classList.remove('menu-open');
+      window.removeEventListener('keydown', closeOnEscape);
+    };
   }, [menuOpen]);
 
   useEffect(() => {
@@ -166,18 +163,19 @@ function LandingPage() {
 
   return (
     <>
+      <a className="skip-link" href="#conteudo-principal">Ir para o conteúdo</a>
       <header className={`site-header ${headerSolid || menuOpen ? 'site-header--solid' : ''}`}>
         <Brand />
         <nav className="desktop-nav" aria-label="Navegação principal">
           {navigation.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
         </nav>
-        <button className="header-cta" type="button" onClick={() => setContactFormOpen(true)}>Fale conosco <ArrowRight size={16} /></button>
+        <button className="header-cta" type="button" onClick={() => setContactFormOpen(true)}>Solicitar orçamento <ArrowRight size={16} /></button>
         <button className="menu-toggle" type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen}>
           {menuOpen ? <X /> : <Menu />}
         </button>
       </header>
 
-      <div className={`mobile-menu ${menuOpen ? 'mobile-menu--open' : ''}`} aria-hidden={!menuOpen}>
+      <div className={`mobile-menu ${menuOpen ? 'mobile-menu--open' : ''}`} aria-hidden={!menuOpen} inert={!menuOpen}>
         <nav>
           {navigation.map(([label, href], index) => (
             <a key={href} href={href} onClick={() => setMenuOpen(false)}>
@@ -187,17 +185,17 @@ function LandingPage() {
         </nav>
       </div>
 
-      <main>
+      <main id="conteudo-principal">
         <section className="hero" id="inicio">
           <div className="hero__image" aria-hidden="true" />
           <div className="hero__shade" aria-hidden="true" />
           <div className="hero__content">
-            <p className="eyebrow hero-enter hero-enter--1"><span /> Tecnologia completa para empresas</p>
+            <p className="eyebrow hero-enter hero-enter--1"><span /> Software, infraestrutura e suporte</p>
             <h1 className="hero-enter hero-enter--2">Tecnologia que<br />move sua <em>empresa.</em></h1>
-            <p className="hero__lead hero-enter hero-enter--3">Software, infraestrutura e suporte trabalhando como um só sistema — seguro, ágil e pronto para crescer.</p>
+            <p className="hero__lead hero-enter hero-enter--3">A MoviSys integra sistemas, automação e infraestrutura para sua empresa operar com segurança e crescer sem gargalos.</p>
             <div className="hero__actions hero-enter hero-enter--4">
-              <a className="button button--primary" href="#solucoes">Conheça as soluções <ArrowRight size={18} /></a>
-              <a className="button button--ghost" href="#assessoria">Como atuamos</a>
+              <button className="button button--primary" type="button" onClick={() => setContactFormOpen(true)}>Falar com um especialista <ArrowRight size={18} /></button>
+              <a className="button button--ghost" href="#solucoes">Conhecer soluções</a>
             </div>
           </div>
           <a className="hero__scroll" href="#visao" aria-label="Descer para conhecer a MoviSys">
@@ -210,15 +208,15 @@ function LandingPage() {
           <div className="section-grid reveal">
             <p className="section-kicker">01 — Visão integrada</p>
             <div>
-              <h2>Uma parceira de tecnologia.<br /><span>Não apenas um fornecedor.</span></h2>
-              <p className="section-copy">A MoviSys conecta os sistemas que gerenciam o negócio à infraestrutura que mantém tudo funcionando. Uma visão completa reduz riscos, elimina ruídos e acelera decisões.</p>
+              <h2>Tudo conectado.<br /><span>Menos risco na operação.</span></h2>
+              <p className="section-copy">Unimos gestão, automação e infraestrutura em uma parceria técnica única. Menos fornecedores, mais controle e decisões mais rápidas.</p>
             </div>
           </div>
           <div className="principles reveal">
             {[
-              ['01', 'Confiabilidade', 'Tecnologia estável para a operação não parar.'],
-              ['02', 'Segurança', 'Dados, acessos e continuidade protegidos.'],
-              ['03', 'Performance', 'Ambientes rápidos, monitorados e escaláveis.'],
+              ['01', 'Operação contínua', 'Tecnologia estável para a empresa não parar.'],
+              ['02', 'Dados protegidos', 'Acessos, backups e continuidade sob controle.'],
+              ['03', 'Crescimento seguro', 'Ambientes preparados para evoluir com o negócio.'],
             ].map(([number, title, copy]) => (
               <div className="principle" key={title}>
                 <span>{number}</span><h3>{title}</h3><p>{copy}</p>
@@ -230,8 +228,8 @@ function LandingPage() {
         <section className="solutions section" id="solucoes">
           <div className="section-heading reveal">
             <p className="section-kicker">02 — Soluções</p>
-            <h2>Da operação à infraestrutura.</h2>
-            <p>Uma única equipe para planejar, implantar e sustentar a tecnologia da empresa.</p>
+            <h2>Uma equipe.<br />Quatro frentes.</h2>
+            <div className="section-heading__support"><p>Planejamento, implantação e suporte com visão completa da operação.</p><button type="button" onClick={() => setContactFormOpen(true)}>Encontrar a solução ideal <ArrowRight /></button></div>
           </div>
           <div className="pillar-list">
             {pillars.map((pillar, index) => {
@@ -255,8 +253,8 @@ function LandingPage() {
         <section className="software" id="software">
           <div className="software__copy reveal">
             <p className="section-kicker section-kicker--light">03 — Software MoviSys</p>
-            <h2>Controle hoje.<br /><span>Clareza para amanhã.</span></h2>
-            <p>Vendas, caixa, financeiro, estoque, compras, produção e relacionamento conectados em uma gestão simples de operar e poderosa para decidir.</p>
+            <h2>Controle agora.<br /><span>Clareza para decidir.</span></h2>
+            <p>Vendas, caixa, financeiro, estoque e relacionamento em uma gestão simples de operar.</p>
             <div className="software__features">
               <span><Database /> Dados centralizados</span>
               <span><Zap /> Operação em tempo real</span>
@@ -289,6 +287,7 @@ function LandingPage() {
           <div className="section-heading reveal">
             <p className="section-kicker">04 — Infraestrutura</p>
             <h2>Uma base projetada<br />para não parar.</h2>
+            <div className="section-heading__support"><p>Conectividade, proteção e disponibilidade para sustentar a operação.</p><button type="button" onClick={() => setContactFormOpen(true)}>Avaliar infraestrutura <ArrowRight /></button></div>
           </div>
           <div className="infra-explorer reveal">
             <div className="infra-tabs" role="tablist" aria-label="Áreas de infraestrutura">
@@ -311,16 +310,16 @@ function LandingPage() {
           <div className="section-grid reveal">
             <p className="section-kicker">05 — Experiência aplicada</p>
             <div>
-              <h2>Tecnologia que entende<br /><span>o ritmo do seu negócio.</span></h2>
-              <p className="section-copy">Cada segmento tem fluxos, riscos e prioridades diferentes. A solução começa pelo entendimento da operação.</p>
+              <h2>Soluções alinhadas<br /><span>à sua operação.</span></h2>
+              <p className="section-copy">Cada negócio tem prioridades diferentes. Selecione um segmento e veja as possibilidades.</p>
             </div>
           </div>
           <article className="custom-system-callout reveal" aria-labelledby="custom-system-title">
             <div className="custom-system-callout__icon" aria-hidden="true"><Code2 /></div>
             <div className="custom-system-callout__copy">
               <p>Desenvolvimento sob medida</p>
-              <h3 id="custom-system-title">Seu processo é único.<br />Seu sistema também pode ser.</h3>
-              <span>Projetamos soluções alinhadas à rotina, às regras e aos objetivos da sua empresa — do primeiro fluxo à evolução contínua.</span>
+              <h3 id="custom-system-title">Software que acompanha<br />o seu processo.</h3>
+              <span>Projetamos sistemas alinhados à rotina e às regras da sua empresa, com evolução contínua.</span>
             </div>
             <ul aria-label="Recursos de sistemas sob medida">
               <li><Check /> Sistemas web e desktop</li>
@@ -330,7 +329,7 @@ function LandingPage() {
           </article>
           <div className="sector-options-heading reveal">
             <p>Soluções por tipo de negócio</p>
-            <span>Selecione um segmento para conhecer as possibilidades.</span>
+            <button type="button" onClick={() => setContactFormOpen(true)}>Não encontrou seu segmento? Fale conosco <ArrowRight /></button>
           </div>
           <div className="sector-list reveal">
             {sectors.map((sector, index) => {
@@ -370,14 +369,15 @@ function LandingPage() {
           <div className="advisory__orb" aria-hidden="true" />
           <div className="advisory__content reveal">
             <p className="section-kicker section-kicker--light">07 — Assessoria contínua</p>
-            <h2>Decisões de tecnologia<br />com visão de negócio.</h2>
-            <p>Planejamento, auditoria e acompanhamento técnico para reduzir custos, preparar expansões e proteger a continuidade da empresa.</p>
+            <h2>Decisões técnicas<br />com visão de negócio.</h2>
+            <p>Planejamento e acompanhamento para reduzir riscos, preparar expansões e proteger a continuidade.</p>
             <div className="advisory__list">
               <span><Check /> Planejamento tecnológico</span>
               <span><Check /> Auditoria de infraestrutura</span>
               <span><Check /> Gestão de ativos e licenças</span>
               <span><Check /> Continuidade de negócios</span>
             </div>
+            <button className="button button--outline-light" type="button" onClick={() => setContactFormOpen(true)}>Agendar uma conversa <ArrowRight /></button>
           </div>
           <div className="advisory__statement reveal">
             <span>Estratégia</span><span>Implementação</span><span>Suporte</span>
@@ -387,14 +387,14 @@ function LandingPage() {
         <section className="final-cta section" id="contato">
           <div className="final-cta__line reveal">
             <div className="final-cta__identity">
-              <img src="/assets/movisys-logo.png" alt="Logo MoviSys Tecnologia" />
               <p className="section-kicker">Próximo passo</p>
+              <span>Atendimento direto e personalizado.</span>
             </div>
-            <h2>Prepare sua empresa<br />para o que vem <em>depois.</em></h2>
-            <p>Converse diretamente com a MoviSys para avaliar sua operação, seus sistemas e sua infraestrutura.</p>
+            <h2>Vamos simplificar<br />sua <em>tecnologia?</em></h2>
+            <p>Conte o que precisa melhorar. Um especialista da MoviSys avalia o cenário com você.</p>
             <button className="contact-form-trigger" type="button" onClick={() => setContactFormOpen(true)}>
               <Send />
-              <span><small>Atendimento personalizado</small><strong>Preencher formulário</strong></span>
+              <span><small>Primeiro contato</small><strong>Solicitar orçamento</strong></span>
               <ArrowRight />
             </button>
             <div className="contact-actions">

@@ -40,19 +40,34 @@ function buildMessage(form) {
 export default function ContactFormModal({ onClose }) {
   const [form, setForm] = useState(initialForm);
   const firstFieldRef = useRef(null);
+  const dialogRef = useRef(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
 
   useEffect(() => {
+    const previousFocus = document.activeElement;
     document.body.classList.add('contact-modal-open');
     firstFieldRef.current?.focus();
 
-    const handleKeyDown = (event) => event.key === 'Escape' && onClose();
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') onCloseRef.current();
+      if (event.key !== 'Tab') return;
+
+      const focusable = dialogRef.current?.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])');
+      if (!focusable?.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    };
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.body.classList.remove('contact-modal-open');
       window.removeEventListener('keydown', handleKeyDown);
+      previousFocus?.focus?.();
     };
-  }, [onClose]);
+  }, []);
 
   const update = (event) => {
     const { name, value } = event.target;
@@ -77,9 +92,9 @@ export default function ContactFormModal({ onClose }) {
 
   return (
     <div className="contact-modal-backdrop" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
-      <section className="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-form-title">
+      <section ref={dialogRef} className="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-form-title">
         <aside className="contact-modal__brand">
-          <img src="/assets/movisys-logo.png" alt="Logo MoviSys Tecnologia" />
+          <img src="/assets/movisys-logo.webp" alt="Logo MoviSys Tecnologia" />
           <div>
             <span>Atendimento comercial</span>
             <p>Descreva sua necessidade. A mensagem será preparada para o canal escolhido.</p>

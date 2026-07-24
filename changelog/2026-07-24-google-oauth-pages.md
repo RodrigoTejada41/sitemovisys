@@ -19,8 +19,12 @@ Data: 24/07/2026.
 - Playwright: Chromium desktop, tablet e mobile sem erros de console e sem overflow horizontal.
 - Playwright: links do rodapé e menu móvel aprovados.
 - Playwright: smoke test em Chrome e Microsoft Edge aprovado.
-- Produção: HTTPS retorna 200, mas as novas rotas ainda renderizam a home antiga porque a VPS não foi publicada nesta execução.
+- Produção: HTTPS 200 validado para `/`, `/politica-de-privacidade`, `/termos-de-servico`, `/quem-somos`, `/fotos-servicos`, `/dev/` e `/PragSys/`.
+- Playwright em produção: Chromium desktop/mobile, Chrome e Microsoft Edge aprovados, sem erros de console.
+- Containers após publicação: SysPragas dev/prod e MoviProgy dev seguem `healthy`.
 
 ## Publicação
 
-Publicar o conteúdo gerado em `dist` na VPS conforme `documentation/DEPLOY_VPS.md`. Acesso SSH sem senha falhou para `root` e `ubuntu`.
+Release publicada em `/var/www/movisys-site/releases/20260724-3ae5156`.
+
+O symlink `/var/www/movisys-site/current` foi atualizado para a nova release. A release anterior `/var/www/movisys-site/releases/20260721-feecf25` foi preservada para rollback.

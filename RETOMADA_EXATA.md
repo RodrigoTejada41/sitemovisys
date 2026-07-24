@@ -21,16 +21,19 @@ Atualizado em 24/07/2026.
 - Galeria de serviços: `http://localhost:8081/fotos-servicos`.
 - Produção: `https://movisystecnologia.com.br`.
 - Página institucional em produção: `https://movisystecnologia.com.br/quem-somos`.
-- As páginas legais de 24/07/2026 ainda não foram publicadas na VPS nesta execução.
+- As páginas legais de 24/07/2026 foram publicadas na VPS.
+- Release ativa após publicação: `/var/www/movisys-site/releases/20260724-3ae5156`.
 
 ## Produção na VPS
 
 - Servidor: `172.233.177.135`.
 - Servidor web: Nginx do host com certificado Let's Encrypt existente.
-- Release ativa: `/var/www/movisys-site/releases/20260717-ff77ecd`.
+- Release ativa: `/var/www/movisys-site/releases/20260724-3ae5156`.
 - Link ativo: `/var/www/movisys-site/current`.
 - Configuração compartilhada: `/etc/nginx/sites-available/movisystecnologia-pragsys.conf`.
 - Backup anterior à implantação: `/etc/nginx/sites-available/movisystecnologia-pragsys.conf.bak-20260717-210035`.
+- Backup da configuração antes da publicação OAuth: `/etc/nginx/sites-available/movisystecnologia-pragsys.conf.bak-20260724-oauth-pages`.
+- Release anterior preservada para rollback: `/var/www/movisys-site/releases/20260721-feecf25`.
 - O site ocupa somente a rota raiz `/`.
 - As aplicações existentes em `/dev/` e `/PragSys/` foram preservadas.
 - Nenhuma senha está armazenada no projeto.
@@ -96,7 +99,10 @@ Logotipos oficiais fornecidos estão documentados em `documentation/client-asset
 - Links do rodapé para páginas legais: aprovados.
 - Menu móvel em `/politica-de-privacidade`: aprovado.
 - Smoke test Playwright em Chrome e Microsoft Edge: aprovado.
-- Produção em 24/07/2026: HTTPS retorna 200, mas `/politica-de-privacidade` e `/termos-de-servico` ainda renderizam a home antiga; publicação na VPS não executada por ausência de acesso SSH sem senha para `root` e `ubuntu`.
+- Produção em 24/07/2026: HTTPS 200 validado para `/`, `/politica-de-privacidade`, `/termos-de-servico`, `/quem-somos`, `/fotos-servicos`, `/dev/` e `/PragSys/`.
+- Playwright em produção: Chromium desktop e mobile aprovados, sem erros de console e sem overflow horizontal.
+- Playwright em produção: smoke test em Chrome e Microsoft Edge aprovado.
+- Containers após publicação: SysPragas dev/prod e MoviProgy dev seguem `healthy`.
 
 ## Estrutura principal
 
@@ -114,8 +120,7 @@ Logotipos oficiais fornecidos estão documentados em `documentation/client-asset
 
 - Receber os logotipos autorizados de Seguradora Mondial e XD Software.
 - Confirmar endereço comercial e perfis sociais antes de publicá-los.
-- Publicar a versão com páginas legais na VPS seguindo `documentation/DEPLOY_VPS.md`.
-- Após a publicação, validar domínio principal, `www`, `/politica-de-privacidade`, `/termos-de-servico`, `/dev/` e `/PragSys/`.
+- Confirmar periodicamente que `/dev/` e `/PragSys/` continuam respondendo após novas publicações do site institucional.
 
 ## Próxima retomada
 

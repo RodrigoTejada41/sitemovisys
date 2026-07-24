@@ -180,6 +180,10 @@ function AboutPage() {
             <a href="mailto:contatomovisystecnologia@gmail.com"><Mail /> contatomovisystecnologia@gmail.com</a>
           </address>
         </div>
+        <div className="footer__links" aria-label="Links legais">
+          <a href="/politica-de-privacidade">Política de Privacidade</a>
+          <a href="/termos-de-servico">Termos de Serviço</a>
+        </div>
         <div className="footer__bottom"><span>© {new Date().getFullYear()} MoviSys</span><span>Tecnologia que move sua empresa</span></div>
       </footer>
 

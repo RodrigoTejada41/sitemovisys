@@ -1,12 +1,14 @@
 # Retomada exata — Site MoviSys
 
-Atualizado em 21/07/2026.
+Atualizado em 24/07/2026.
 
 ## Estado operacional
 
 - Aplicação React + Vite concluída e compilando.
 - Redesign UX/UI das três rotas concluído e validado localmente.
-- Checkpoint local desta entrega: commit com assunto `feat: aprimora UX e conversao do site`.
+- Checkpoint local anterior: commit com assunto `feat: aprimora UX e conversao do site`.
+- Backup antes das páginas OAuth: branch local `backup/pre-google-oauth-pages` no commit `feecf25`.
+- Checkpoint local desta entrega: commit com assunto `feat: adiciona paginas legais para oauth google`.
 - Servidor de desenvolvimento: `npm.cmd run dev -- --host 127.0.0.1 --port 4173`.
 - Preview local durante o desenvolvimento: `http://127.0.0.1:4173`.
 - Contêiner Docker: `site-movisys-m`.
@@ -14,10 +16,12 @@ Atualizado em 21/07/2026.
 - Porta local: `8081`.
 - Página inicial: `http://localhost:8081/`.
 - Página institucional: `http://localhost:8081/quem-somos`.
+- Política de Privacidade: `http://localhost:8081/politica-de-privacidade`.
+- Termos de Serviço: `http://localhost:8081/termos-de-servico`.
 - Galeria de serviços: `http://localhost:8081/fotos-servicos`.
 - Produção: `https://movisystecnologia.com.br`.
 - Página institucional em produção: `https://movisystecnologia.com.br/quem-somos`.
-- O redesign de 21/07/2026 ainda não foi publicado na VPS.
+- As páginas legais de 24/07/2026 ainda não foram publicadas na VPS nesta execução.
 
 ## Produção na VPS
 
@@ -40,6 +44,9 @@ Atualizado em 21/07/2026.
 - Dez tipos de negócio com painel interativo de descrição.
 - Seção `Nossos Clientes` com grade estática responsiva e sem movimento automático.
 - Página `Quem Somos` com trajetória condensada, missão, visão, valores e CTA comercial.
+- Páginas públicas `/politica-de-privacidade` e `/termos-de-servico` para verificação OAuth do Google.
+- Conteúdo legal cobrindo LGPD, dados de login Google, uso autorizado do Google Calendar, tokens OAuth, revogação e exclusão de dados.
+- Links legais adicionados ao rodapé da página inicial, Quem Somos e páginas legais.
 - Formulário de contato com seleção do serviço e envio por WhatsApp ou e-mail.
 - Formulário com contenção de foco, fechamento por `Escape` e restauração do foco anterior.
 - Links diretos para WhatsApp, telefone e e-mail.
@@ -81,12 +88,21 @@ Logotipos oficiais fornecidos estão documentados em `documentation/client-asset
 - `/`, `/quem-somos`, `/fotos-servicos`, `robots.txt`, `sitemap.xml` e WebP principal: HTTP 200 no ambiente local.
 - Seis WebPs principais: `663.086 bytes` no total, contra aproximadamente `12,4 MB` dos PNGs usados antes.
 - `npm audit`: zero vulnerabilidades.
-- Docker, Nginx e HTTPS de produção não foram revalidados nesta entrega porque não houve publicação.
+- `npx.cmd tsc --noEmit`: aprovado em 24/07/2026.
+- `npm.cmd run build`: aprovado em 24/07/2026. Build final: JavaScript `275,65 kB` (`82,90 kB` gzip) e CSS `71,55 kB` (`15,39 kB` gzip).
+- Preview local `http://127.0.0.1:4173`: aprovado.
+- HTTP 200 local para `/`, `/politica-de-privacidade`, `/termos-de-servico`, `/quem-somos`, `/fotos-servicos`, `robots.txt` e `sitemap.xml`.
+- Playwright em Chromium desktop `1440px`, tablet `768px` e mobile Pixel 5: aprovado, sem erros de console e sem overflow horizontal.
+- Links do rodapé para páginas legais: aprovados.
+- Menu móvel em `/politica-de-privacidade`: aprovado.
+- Smoke test Playwright em Chrome e Microsoft Edge: aprovado.
+- Produção em 24/07/2026: HTTPS retorna 200, mas `/politica-de-privacidade` e `/termos-de-servico` ainda renderizam a home antiga; publicação na VPS não executada por ausência de acesso SSH sem senha para `root` e `ubuntu`.
 
 ## Estrutura principal
 
 - `src/App.jsx`: página inicial e roteamento local.
 - `src/about/`: página institucional.
+- `src/legal/`: páginas legais para OAuth Google, privacidade e termos.
 - `src/components/clients/`: seção e cadastro de clientes.
 - `src/contact/`: formulário de contato.
 - `src/service-photos/`: galeria de serviços.
@@ -98,16 +114,16 @@ Logotipos oficiais fornecidos estão documentados em `documentation/client-asset
 
 - Receber os logotipos autorizados de Seguradora Mondial e XD Software.
 - Confirmar endereço comercial e perfis sociais antes de publicá-los.
-- Publicar o redesign na VPS seguindo `documentation/DEPLOY_VPS.md`.
-- Após a publicação, validar domínio principal, `www`, `/dev/` e `/PragSys/`.
+- Publicar a versão com páginas legais na VPS seguindo `documentation/DEPLOY_VPS.md`.
+- Após a publicação, validar domínio principal, `www`, `/politica-de-privacidade`, `/termos-de-servico`, `/dev/` e `/PragSys/`.
 
 ## Próxima retomada
 
 1. Executar `git status --short --branch` e confirmar que a árvore está limpa.
-2. Executar `git log -1 --oneline` e localizar `feat: aprimora UX e conversao do site`.
+2. Executar `git log -1 --oneline` e localizar `feat: adiciona paginas legais para oauth google`.
 3. Executar `npm.cmd install`, `npx.cmd tsc --noEmit` e `npm.cmd run build`.
 4. Para revisão local, executar `npm.cmd run dev -- --host 127.0.0.1 --port 4173`.
-5. Abrir `http://127.0.0.1:4173`, `/quem-somos` e `/fotos-servicos`.
+5. Abrir `http://127.0.0.1:4173`, `/politica-de-privacidade`, `/termos-de-servico`, `/quem-somos` e `/fotos-servicos`.
 6. Para publicação ou rollback, seguir `documentation/DEPLOY_VPS.md`.
 
 Para nova publicação ou rollback, seguir `documentation/DEPLOY_VPS.md`.

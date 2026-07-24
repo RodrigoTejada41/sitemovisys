@@ -35,6 +35,7 @@ import ContactFormModal from './contact/ContactFormModal';
 import { ClientsSection } from './components/clients/ClientsSection';
 import AboutPage from './about/AboutPage';
 import { Brand } from './shared/Brand';
+import LegalPage from './legal/LegalPage';
 
 const navigation = [
   ['Soluções', '#solucoes'],
@@ -422,6 +423,10 @@ function LandingPage() {
             <a href="mailto:contatomovisystecnologia@gmail.com"><Mail /> contatomovisystecnologia@gmail.com</a>
           </address>
         </div>
+        <div className="footer__links" aria-label="Links legais">
+          <a href="/politica-de-privacidade">Política de Privacidade</a>
+          <a href="/termos-de-servico">Termos de Serviço</a>
+        </div>
         <div className="footer__bottom"><span>© {new Date().getFullYear()} MoviSys</span><span>Tecnologia que move sua empresa</span></div>
       </footer>
 
@@ -436,6 +441,14 @@ function LandingPage() {
 }
 
 function App() {
+  if (window.location.pathname.startsWith('/politica-de-privacidade')) {
+    return <LegalPage type="privacy" />;
+  }
+
+  if (window.location.pathname.startsWith('/termos-de-servico')) {
+    return <LegalPage type="terms" />;
+  }
+
   if (window.location.pathname.startsWith('/quem-somos')) {
     return <AboutPage />;
   }

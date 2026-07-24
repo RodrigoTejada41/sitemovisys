@@ -13,6 +13,7 @@ Produção: [https://movisystecnologia.com.br](https://movisystecnologia.com.br)
 - Grade responsiva de clientes.
 - Formulário com envio por WhatsApp ou e-mail.
 - Galeria de serviços técnicos.
+- Páginas legais públicas para verificação OAuth do Google Calendar.
 - SEO técnico, dados estruturados e navegação semântica.
 - Imagens otimizadas em WebP.
 
@@ -45,6 +46,8 @@ Acesse `http://localhost:8081`.
 
 - `/`: página inicial.
 - `/quem-somos`: página institucional.
+- `/politica-de-privacidade`: política de privacidade, LGPD e uso das APIs do Google.
+- `/termos-de-servico`: termos de serviço e condições de uso.
 - `/fotos-servicos`: galeria de serviços.
 
 ## Documentação

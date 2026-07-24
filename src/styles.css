@@ -78,6 +78,17 @@ section[id] { scroll-margin-top: 70px; }
 .hero h1 { max-width: 800px; margin: 0; font-size: clamp(4rem, 7vw, 7.2rem); line-height: .89; letter-spacing: -.065em; font-weight: 710; }
 .hero h1 em, .final-cta h2 em { color: var(--cyan); font-style: normal; font-weight: inherit; }
 .hero__lead { max-width: 590px; margin: 30px 0 0; color: rgba(255,255,255,.7); font-size: clamp(1.05rem, 1.5vw, 1.22rem); line-height: 1.55; }
+
+.biological-app { background: #e8eff0; }
+.biological-app__heading { display: grid; grid-template-columns: 1.35fr .65fr; gap: 7vw; align-items: end; padding-bottom: 42px; border-bottom: 1px solid var(--line); }
+.biological-app__heading h2 { margin: 0; font-size: clamp(3.4rem, 6vw, 6.2rem); line-height: .92; }
+.biological-app__heading > p { max-width: 430px; margin: 0; color: #244653; font-size: 1.15rem; line-height: 1.55; }
+.biological-app__content { display: grid; grid-template-columns: .7fr 1.3fr; gap: 7vw; padding-top: 48px; }
+.biological-app__purpose { color: #38535e; font-size: 1.04rem; line-height: 1.7; }
+.biological-app__oauth h3 { margin: 0 0 20px; color: var(--ink); font-size: 1.6rem; }
+.biological-app__oauth p { margin: 0 0 14px; color: #536871; line-height: 1.65; }
+.button--app { width: fit-content; margin-top: 18px; border: 1px solid var(--navy); background: var(--navy); color: #fff; }
+.button--app:hover { border-color: #087e99; background: #087e99; }
 .hero__actions { display: flex; gap: 14px; margin-top: 38px; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 14px; min-height: 54px; padding: 0 25px; border: 1px solid transparent; border-radius: var(--radius); cursor: pointer; font-size: .85rem; font-weight: 700; transition: color .25s, background .25s, border .25s, transform .25s; }
 .button:hover { transform: translateY(-2px); }
@@ -292,6 +303,7 @@ footer { padding: 70px max(4vw, calc((100vw - var(--max)) / 2)) 35px; background
   .hero__rail { display: none; }
   .section, .software, .advisory { padding: 95px 6vw; }
   .section-grid { grid-template-columns: 1fr; gap: 35px; }
+  .biological-app__heading, .biological-app__content { grid-template-columns: 1fr; gap: 32px; }
   .principles { margin-top: 70px; }
   .section-heading { grid-template-columns: 1fr; gap: 22px; }
   .section-heading > p:last-child { max-width: 500px; }
@@ -338,6 +350,9 @@ footer { padding: 70px max(4vw, calc((100vw - var(--max)) / 2)) 35px; background
   .hero__scroll { display: none; }
   .section, .software, .advisory { padding: 78px 6vw; }
   .section h2, .section-heading h2, .software h2, .advisory h2 { font-size: 2.75rem; }
+  .biological-app__heading h2 { font-size: 3.25rem; }
+  .biological-app__content { padding-top: 34px; }
+  .button--app { width: 100%; justify-content: space-between; }
   .principles { grid-template-columns: 1fr; }
   .principle { padding: 26px 0; border-bottom: 1px solid var(--line); }
   .principle + .principle { padding-left: 0; border-left: 0; }

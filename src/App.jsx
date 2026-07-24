@@ -205,6 +205,32 @@ function LandingPage() {
           <div className="hero__rail"><span>MoviSys</span><span>Software · Infraestrutura · Suporte</span></div>
         </section>
 
+        <section className="biological-app section" id="evolucao-biologica" aria-labelledby="biological-app-title">
+          <div className="biological-app__heading">
+            <div>
+              <p className="section-kicker">Aplicativo oficial MoviSys</p>
+              <h2 id="biological-app-title">Evolução Biológica</h2>
+            </div>
+            <p>Sistema de gestão com integração autorizada ao Google Calendar.</p>
+          </div>
+          <div className="biological-app__content">
+            <div className="biological-app__purpose">
+              <p>O Evolução Biológica é um sistema de gestão desenvolvido pela MoviSys Tecnologia para empresas de controle de pragas, dedetização, sanitização e manejo integrado de pragas.</p>
+              <p>O sistema permite organizar clientes, ordens de serviço, visitas técnicas, compromissos, certificados, relatórios, contratos e vencimentos de serviços.</p>
+            </div>
+            <div className="biological-app__oauth">
+              <h3>Integração com o Google Calendar</h3>
+              <p>A integração permite que cada empresa usuária conecte voluntariamente uma Conta Google e sincronize seus compromissos, visitas técnicas, atendimentos e ordens de serviço com a agenda autorizada.</p>
+              <p>Cada conta é conectada individualmente. Um cliente não possui acesso à agenda, aos eventos ou às credenciais de outros clientes.</p>
+              <p>A conexão utiliza o protocolo OAuth 2.0 do Google. O Evolução Biológica não solicita nem armazena a senha da Conta Google.</p>
+              <p>Os dados autorizados são utilizados exclusivamente para fornecer a sincronização solicitada pelo usuário. O acesso pode ser revogado pelo próprio usuário a qualquer momento.</p>
+              <a className="button button--app" href="/evolucao-biologica/appagenda">
+                Conheça a integração com o Google Calendar <ArrowRight size={18} />
+              </a>
+            </div>
+          </div>
+        </section>
+
         <section className="intro section" id="visao">
           <div className="section-grid reveal">
             <p className="section-kicker">01 — Visão integrada</p>

@@ -22,17 +22,19 @@ Atualizado em 24/07/2026.
 - Produção: `https://movisystecnologia.com.br`.
 - Página institucional em produção: `https://movisystecnologia.com.br/quem-somos`.
 - As páginas legais de 24/07/2026 foram publicadas na VPS.
-- Release ativa após publicação: `/var/www/movisys-site/releases/20260724-3ae5156`.
+- Branding OAuth do Evolução Biológica publicado na raiz e na página detalhada.
+- Release ativa após publicação: `/var/www/movisys-site/releases/20260724-branding-010315`.
 
 ## Produção na VPS
 
 - Servidor: `172.233.177.135`.
 - Servidor web: Nginx do host com certificado Let's Encrypt existente.
-- Release ativa: `/var/www/movisys-site/releases/20260724-3ae5156`.
+- Release ativa: `/var/www/movisys-site/releases/20260724-branding-010315`.
 - Link ativo: `/var/www/movisys-site/current`.
 - Configuração compartilhada: `/etc/nginx/sites-available/movisystecnologia-pragsys.conf`.
 - Backup anterior à implantação: `/etc/nginx/sites-available/movisystecnologia-pragsys.conf.bak-20260717-210035`.
 - Backup da configuração antes da publicação OAuth: `/etc/nginx/sites-available/movisystecnologia-pragsys.conf.bak-20260724-oauth-pages`.
+- Backup do HTML anterior do aplicativo: `/var/www/evolucao-biologica-public/appagenda.html.bak-20260724-branding-010315`.
 - Release anterior preservada para rollback: `/var/www/movisys-site/releases/20260721-feecf25`.
 - O site ocupa somente a rota raiz `/`.
 - As aplicações existentes em `/dev/` e `/PragSys/` foram preservadas.

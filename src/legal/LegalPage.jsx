@@ -26,18 +26,18 @@ const legalPages = {
   privacy: {
     path: '/politica-de-privacidade',
     title: 'Política de Privacidade | MoviSys Tecnologia',
-    description: 'Política de Privacidade da MoviSys Tecnologia e informações sobre o tratamento de dados e integrações com serviços Google.',
+    description: 'Política de Privacidade do Evolução Biológica, desenvolvido pela MoviSys Tecnologia, e informações sobre a integração autorizada com o Google Calendar.',
     canonical: 'https://movisystecnologia.com.br/politica-de-privacidade',
     eyebrow: 'Privacidade e LGPD',
     heading: 'Política de Privacidade',
-    lead: 'Esta Política explica como a MoviSys Tecnologia trata dados pessoais no site, no atendimento comercial e nas integrações autorizadas com serviços Google.',
+    lead: 'Esta Política explica como a MoviSys Tecnologia trata dados pessoais no site, no Evolução Biológica e na integração autorizada com o Google Calendar.',
     updatedAt: '24 de julho de 2026',
     icon: ShieldCheck,
     sections: [
       {
         title: 'Identificacao da empresa',
         body: [
-          'A MoviSys Tecnologia fornece soluções de software, automação comercial, infraestrutura e suporte técnico para empresas. O contato oficial para assuntos de privacidade e atendimento é contatomovisystecnologia@gmail.com.',
+          'A MoviSys Tecnologia desenvolve o Evolução Biológica, sistema de gestão para empresas de controle de pragas. O contato oficial para assuntos de privacidade e atendimento é contatomovisystecnologia@gmail.com.',
         ],
       },
       {
@@ -54,10 +54,11 @@ const legalPages = {
         ],
       },
       {
-        title: 'Uso de dados do Google Calendar',
+        title: 'Evolução Biológica e Google Calendar',
         body: [
-          'Quando o usuário autorizar a integração, o sistema poderá consultar, criar, editar ou excluir eventos do Google Calendar somente para executar funcionalidades de agenda solicitadas ou configuradas pelo próprio usuário.',
-          'A MoviSys não acessa calendários, eventos ou dados da conta Google sem autorização OAuth válida.',
+          'A integração opcional do Evolução Biológica usa OAuth 2.0 para criar, atualizar e excluir eventos do Google Calendar somente quando solicitado no fluxo de agenda do sistema.',
+          'Podem ser tratados a identificação básica e o e-mail da Conta Google conectada, os dados necessários dos compromissos autorizados e os identificadores dos eventos sincronizados. A MoviSys não recebe nem armazena a senha da Conta Google.',
+          'A autorização é associada ao ambiente da empresa autenticada. As operações validam esse contexto para impedir que um cliente acesse agendas, eventos ou credenciais de outro cliente.',
         ],
       },
       {
@@ -65,7 +66,7 @@ const legalPages = {
         body: [
           'O sistema acessará somente os dados autorizados pelo usuário e usará esses dados exclusivamente para oferecer funcionalidades relacionadas à agenda.',
           'Os dados obtidos pelas APIs do Google não serão vendidos, não serão usados para publicidade e não serão transferidos para finalidades alheias ao funcionamento da integração autorizada.',
-          'O usuário pode revogar o acesso a qualquer momento nas configurações da própria Conta Google. O tratamento seguirá a Política de Dados do Usuário dos Serviços de API do Google, incluindo os requisitos de uso limitado.',
+          'O usuário pode revogar o acesso a qualquer momento nas configurações da própria Conta Google ou desconectar a integração no Evolução Biológica. O tratamento seguirá a Política de Dados do Usuário dos Serviços de API do Google, incluindo os requisitos de uso limitado.',
         ],
       },
       {
@@ -89,7 +90,7 @@ const legalPages = {
       {
         title: 'Retencao e exclusao',
         body: [
-          'Mantemos dados pelo tempo necessário para cumprir as finalidades informadas, contratos, obrigações legais e defesa de direitos. O titular pode solicitar exclusão pelo e-mail de contato, observadas obrigações legais de retenção.',
+          'Mantemos dados pelo tempo necessário para cumprir as finalidades informadas, contratos, obrigações legais e defesa de direitos. O titular pode solicitar pelo e-mail de contato a exclusão dos dados relacionados ao Evolução Biológica e à integração, observadas obrigações legais de retenção.',
         ],
       },
       {
@@ -127,18 +128,18 @@ const legalPages = {
   terms: {
     path: '/termos-de-servico',
     title: 'Termos de Serviço | MoviSys Tecnologia',
-    description: 'Termos e condições de uso dos serviços e integrações disponibilizados pela MoviSys Tecnologia.',
+    description: 'Termos de uso do Evolução Biológica e de sua integração opcional e autorizada com o Google Calendar.',
     canonical: 'https://movisystecnologia.com.br/termos-de-servico',
     eyebrow: 'Condições de uso',
     heading: 'Termos de Serviço',
-    lead: 'Estes Termos definem as condições gerais de uso dos serviços, canais digitais e integrações oferecidos pela MoviSys Tecnologia.',
+    lead: 'Estes Termos definem as condições de uso do Evolução Biológica e da integração opcional com o Google Calendar oferecida pela MoviSys Tecnologia.',
     updatedAt: '24 de julho de 2026',
     icon: FileText,
     sections: [
       {
         title: 'Identificacao e aceitacao',
         body: [
-          'A MoviSys Tecnologia fornece serviços de software, automação comercial, infraestrutura e suporte técnico. Ao contratar serviços, usar canais digitais ou autorizar integrações, o usuário declara ter lido e aceito estes Termos.',
+          'A MoviSys Tecnologia desenvolve o Evolução Biológica, sistema de gestão para empresas de controle de pragas. Ao usar o sistema ou autorizar integrações, o usuário declara ter lido e aceito estes Termos.',
         ],
       },
       {
@@ -174,13 +175,20 @@ const legalPages = {
       {
         title: 'Integracao com Google Calendar',
         body: [
-          'A integração com Google Calendar depende de autorização OAuth concedida pelo usuário. Quando autorizada, poderá permitir consulta, criação, edição ou exclusão de eventos conforme as funcionalidades de agenda efetivamente utilizadas.',
+          'A integração opcional do Evolução Biológica com o Google Calendar depende de autorização OAuth 2.0 concedida na Conta Google escolhida pelo usuário. Quando autorizada, permite criar, atualizar ou excluir eventos conforme as funcionalidades de agenda efetivamente utilizadas.',
+          'A autorização fica vinculada ao ambiente da empresa autenticada. Um cliente não pode acessar ou sincronizar eventos, agendas ou credenciais de outro cliente.',
         ],
       },
       {
         title: 'Autorizacao OAuth e revogacao',
         body: [
-          'A autorização OAuth pode ser revogada pelo usuário nas configurações da Conta Google. A revogação pode limitar ou interromper recursos ligados ao Google Calendar.',
+          'O usuário é responsável pela Conta Google que decidir conectar. A autorização OAuth pode ser revogada nas configurações da Conta Google ou pela desconexão no Evolução Biológica. A revogação pode limitar ou interromper recursos ligados ao Google Calendar.',
+        ],
+      },
+      {
+        title: 'Servicos externos',
+        body: [
+          'A integração depende da disponibilidade, das regras e das APIs mantidas pelo Google. Alterações ou indisponibilidades desses serviços podem afetar temporariamente a sincronização sem impedir o uso das demais funções do Evolução Biológica.',
         ],
       },
       {

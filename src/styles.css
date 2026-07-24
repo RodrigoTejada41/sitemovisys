@@ -89,6 +89,9 @@ section[id] { scroll-margin-top: 70px; }
 .biological-app__oauth p { margin: 0 0 14px; color: #536871; line-height: 1.65; }
 .button--app { width: fit-content; margin-top: 18px; border: 1px solid var(--navy); background: var(--navy); color: #fff; }
 .button--app:hover { border-color: #087e99; background: #087e99; }
+.biological-app__legal { display: flex; flex-wrap: wrap; gap: 16px 26px; margin-top: 22px; }
+.biological-app__legal a { color: #086f88; font-size: .85rem; font-weight: 750; text-decoration: underline; text-underline-offset: 4px; }
+.biological-app__legal a:hover { color: var(--navy); }
 .hero__actions { display: flex; gap: 14px; margin-top: 38px; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 14px; min-height: 54px; padding: 0 25px; border: 1px solid transparent; border-radius: var(--radius); cursor: pointer; font-size: .85rem; font-weight: 700; transition: color .25s, background .25s, border .25s, transform .25s; }
 .button:hover { transform: translateY(-2px); }
@@ -286,6 +289,27 @@ footer { padding: 70px max(4vw, calc((100vw - var(--max)) / 2)) 35px; background
 .whatsapp-float { position: fixed; z-index: 40; right: 22px; bottom: 22px; min-height: 48px; display: flex; align-items: center; gap: 9px; padding: 0 17px; border-radius: 25px; background: #16a963; color: #fff; box-shadow: 0 12px 32px rgba(8,91,50,.3); font-size: .75rem; font-weight: 750; transition: transform .2s, background .2s; }
 .whatsapp-float:hover { transform: translateY(-3px); background: #10864d; }
 .whatsapp-float svg { width: 19px; }
+
+.site-header:not(.site-header--solid) { background: rgba(6,19,29,.78); backdrop-filter: blur(10px); }
+.biological-app .section-kicker,
+.intro .section-kicker,
+.solutions .section-kicker,
+.infrastructure .section-kicker,
+.sectors .section-kicker { color: #3f5964; }
+.section-grid h2 span { color: #5d717a; }
+.principle > span,
+.pillar__number,
+.infra-tabs button span { color: #4d6670; }
+.section-heading__support button,
+.sector-options-heading button,
+.infra-tabs button[aria-selected="true"],
+.infra-detail > p { color: #055f73; }
+.product-avatar { background: #096077; font-weight: 750; }
+.final-cta .section-kicker,
+.final-cta__identity > span,
+.final-cta h2 em,
+.contact-actions small { color: #14333f; }
+.footer__bottom { color: #8297a1; }
 
 .reveal { opacity: 1; transform: none; }
 

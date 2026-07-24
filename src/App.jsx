@@ -227,6 +227,10 @@ function LandingPage() {
               <a className="button button--app" href="/evolucao-biologica/appagenda">
                 Conheça a integração com o Google Calendar <ArrowRight size={18} />
               </a>
+              <nav className="biological-app__legal" aria-label="Documentos do Evolução Biológica">
+                <a href="/politica-de-privacidade">Política de Privacidade</a>
+                <a href="/termos-de-servico">Termos de Serviço</a>
+              </nav>
             </div>
           </div>
         </section>
